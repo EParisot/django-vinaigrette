@@ -165,7 +165,7 @@ class Command(django_makemessages.Command):
             ]
 
         for po_path in po_paths:
-            with open(po_path) as po_file:
+            with open(po_path, "r", encoding="utf8") as po_file:
                 new_contents = []
                 lastline = ''
                 for line in po_file:
@@ -191,6 +191,6 @@ class Command(django_makemessages.Command):
                     lastline = line
 
             # Perhaps this should be done a little more atomically w/ renames?
-            with open(po_path, 'w') as po_file:
+            with open(po_path, 'w', encoding="utf8") as po_file:
                 for line in new_contents:
                     po_file.write(line)
